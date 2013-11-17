@@ -1,0 +1,6 @@
+package com.proyectom;
+
+public class ciudad {
+	int id;
+	String nombre;	
+}

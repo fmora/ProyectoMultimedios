@@ -1,0 +1,86 @@
+package com.proyectom;
+
+import java.util.Date;
+import java.util.Vector;
+
+public class viaje {
+	int idviaje;
+	int idconductor;
+	Vector<Integer> idpasajero;
+	int idorigen;
+	int iddestino;
+	Date fecha;
+	String ptopartida;
+	String ptopartidagps;
+	String ptollegada;
+	String ptollegadagps;
+
+		public viaje(int idviaje,int idconductor,int idorigen,int iddestino,Date fecha,String ptopartida, String ptopartidagps,	String ptollegada,String ptollegadagps){
+			this.idviaje = idviaje;
+			this.idconductor = idconductor;
+			this.idorigen = idorigen;
+			this.iddestino = iddestino;
+			this.fecha = fecha;
+			this.ptopartida = ptopartida;
+			this.ptopartidagps = ptopartidagps;
+			this.ptollegada = ptollegada;
+			this.ptollegadagps = ptollegadagps;
+		}
+		
+		public void setidviaje(int idviaje){
+			this.idviaje = idviaje;
+		}
+		public void setidconductor(int idconductor){
+			this.idconductor = idconductor;
+		}
+		public void setidorigen(int idorigen){
+			this.idorigen = idorigen;
+		}
+		public void setiddestino(int iddestino){
+			this.iddestino = iddestino;
+		}
+		public void setfecha(Date fecha){
+			this.fecha = fecha;
+		}
+		public void setptopartida(String ptopartida, String ptopartidagps){
+			this.ptopartida = ptopartida;
+			this.ptopartidagps = ptopartidagps;
+		}
+		public void setptollegada(String ptollegada, String ptollegadagps){
+			this.ptollegada = ptollegada;
+			this.ptollegadagps = ptollegadagps;
+		}
+		public int getidviaje(){
+			return this.idviaje;
+		}
+		public int getidconductor(){
+			return this.idconductor;
+		}
+		public Vector<Integer> getidpasajero(){
+			return this.idpasajero;
+		}
+		public int getidorigen(){
+			return this.idorigen;
+		}
+		public int getiddestino(){
+			return this.iddestino;
+		}
+		public Date getfecha(){
+			return this.fecha;
+		}
+		public String getptopartida(){
+			return this.ptopartida;
+		}
+		public String getptopartidagps(){
+			return this.ptopartidagps;
+		}
+		public String getptollegada(){
+			return this.ptollegada;
+		}
+		public String getptollegadagps(){
+			return this.ptollegadagps;
+		}
+		public void addPasajero(int idpasajero){
+			this.idpasajero.add(idpasajero);
+		}	
+}

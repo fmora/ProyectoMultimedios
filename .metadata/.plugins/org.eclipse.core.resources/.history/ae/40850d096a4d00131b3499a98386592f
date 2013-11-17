@@ -1,0 +1,48 @@
+package com.proyectom;
+
+public class usuario {
+	int idusuario;
+	String nombre;
+	String cuentafacebook;
+	int telefono;
+	
+	public usuario (int idusuario, String nombre, String cuentafacebook, int telefono){
+		this.idusuario = idusuario;
+		this.nombre = nombre;
+		this.cuentafacebook = cuentafacebook;
+		this.telefono = telefono;
+	}
+	
+	public void setidusuario(int idusuario){
+		this.idusuario = idusuario;
+	}
+	
+	public void setnombre(String nombre){
+		this.nombre = nombre;
+	}
+	
+	public void setcuentafacebook(String cuentafacebook){
+		this.cuentafacebook = cuentafacebook;
+	}
+	
+	public void settelefono(int telefono){
+		this.telefono = telefono;		
+	}
+	
+	public int getidusuario(){
+		return this.idusuario;
+	}
+	
+	public String getnombre(){
+		return this.nombre;
+	}
+	
+	public String getcuentafacebook(){
+		return this.cuentafacebook;
+	}
+	
+	public int gettelefono(){
+		return this.telefono;		
+	}
+	
+}
