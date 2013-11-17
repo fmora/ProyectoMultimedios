@@ -2,14 +2,27 @@ package com.proyectom;
 
 import android.os.Bundle;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
 
 public class MainActivity extends Activity {
-
+	Button Registrar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        
+        Registrar = (Button) findViewById(R.id.button1);
+        Registrar.setOnClickListener(new OnClickListener() {
+        	
+        	public void onClick(View v){
+        		Intent intent = new Intent(getApplicationContext(),RegisterTravel.class);
+        		startActivity(intent);
+        	}
+        });
     }
 
 
