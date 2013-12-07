@@ -18,4 +18,9 @@
 	<string name="es_canceling">Cancelado</string>
 	<string name="es_finish">Finalizado</string>
 	<string name="es_registered">Registrado</string>
+	
+	<string name="name">user</string>
+    <string name="pass">pass</string>
+    <string name="error_message">Usuario y contraseña incorrectos, por favor ingrese nuevamente.</string>
+    
 </resources>
