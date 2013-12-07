@@ -26,7 +26,7 @@ public class MenuPrincipal extends Activity {
         	
         	public void onClick(View v){
         	
-        		Intent intent = new Intent(getApplicationContext(), RegisterTravel.class);
+        		Intent intent = new Intent(getApplicationContext(), RegisterTravel2.class);
         		startActivity(intent);
         
         	}
