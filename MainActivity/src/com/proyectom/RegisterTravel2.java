@@ -1,19 +1,27 @@
 package com.proyectom;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Vector;
 
 import com.example.proyectom.R;
+
 import android.app.Activity;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class RegisterTravel2 extends Activity {
 	private Button button;
-	EditText citySource, cityDest, dayTravel, startPoint, endPoint, startPointGPS, endPointGPS;
+	EditText dayTravel, startPoint, endPoint, startPointGPS, endPointGPS;
+	Spinner citySource, cityDest;
+	private List<String> aux;
 	private Vector<String> ciudades;
 	String resulthttp;
 	
@@ -21,39 +29,48 @@ public class RegisterTravel2 extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.register_travel);
-			
+		//setear ciudades para mostrar y registrar
+		Bundle b = new Bundle(); 
+		b = getIntent().getExtras();
+		int lenght = b.getInt("lenght");
+		ciudades = new Vector<String>();
+		ciudades.addElement(" ");
+		aux = new ArrayList<String>();
+		for(int i = 1; i < lenght; i++){
+			ciudades.addElement(b.getString(Integer.toString(i)));
+			aux.add(b.getString(Integer.toString(i)));
+		}
+		
+		String[] toShow = aux.toArray(new String[0]);
+		
 		button = (Button) findViewById(R.id.button1);
-		citySource = (EditText) findViewById(R.id.editText1);
-		cityDest = (EditText) findViewById(R.id.editText2);
+		citySource = (Spinner) findViewById(R.id.spinner1);
+		cityDest = (Spinner) findViewById(R.id.spinner2);
 		dayTravel =  (EditText) findViewById(R.id.editText3);
 		startPoint =  (EditText) findViewById(R.id.editText5);
 		endPoint =  (EditText) findViewById(R.id.editText6);
 		startPointGPS =  (EditText) findViewById(R.id.EditText01);
 		endPointGPS =  (EditText) findViewById(R.id.EditText02);
 		
+		ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,(String[]) toShow);
+		citySource.setAdapter(adaptador);
+		cityDest.setAdapter(adaptador);
 		button.setOnClickListener(new OnClickListener() {
-
             @Override
             public void onClick(View v) {
             	new reg_travel().execute();
             }
         });
 	}
-    
+       
     class reg_travel extends AsyncTask<Void,Void,Boolean>{
 		@Override
 		protected Boolean doInBackground(Void... arg0) {
 			// TODO Auto-generated method stub
 			//obtener datos a registrar
-			ciudades = new Vector<String>();
-			ciudades.add(" ");ciudades.add("Arica"); ciudades.add("Iquique"); ciudades.add("Antofagasta");
-			ciudades.add("Copiapo"); ciudades.add("La Serena"); ciudades.add("Coquimbo");
-			ciudades.add("Valparaiso"); ciudades.add("Viña del Mar"); ciudades.add("Rancagua");
-			ciudades.add("Talca"); ciudades.add("Concepcion"); ciudades.add("Temuco");
-			ciudades.add("Puerto Montt"); ciudades.add("Coyhaique"); ciudades.add("Magallanes");
-			ciudades.add("Santiago"); ciudades.add("Valdivia");
-			int par3 = ciudades.indexOf(citySource.getText().toString());
-        	int par4 = ciudades.indexOf(cityDest.getText().toString());
+						
+			int par3 = ciudades.indexOf(citySource.getSelectedItem().toString());
+        	int par4 = ciudades.indexOf(cityDest.getSelectedItem().toString());
         	String par5 = dayTravel.getText().toString();
         	String par6 = startPoint.getText().toString();
         	String par7 = startPointGPS.getText().toString();

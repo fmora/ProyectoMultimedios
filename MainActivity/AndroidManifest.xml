@@ -28,11 +28,6 @@
             android:name="com.proyectom.MenuPrincipal"
             android:label="@string/app_name" >
         </activity>
-        
-        <activity
-            android:name="com.proyectom.RegisterTravel"
-            android:label="@string/app_name" >
-        </activity>
         <activity
             android:name="com.proyectom.RegisterTravel2"
             android:label="@string/app_name" >

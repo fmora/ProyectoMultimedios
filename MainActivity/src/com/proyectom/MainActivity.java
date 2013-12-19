@@ -19,6 +19,7 @@ public class MainActivity extends Activity {
 	//private EditText PassEdit;
 	//private EditText NameEdit;
 	
+	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +28,7 @@ public class MainActivity extends Activity {
         //PassEdit = (EditText) findViewById(R.id.passEdit);
         //NameEdit = (EditText) findViewById(R.id.nameEdit);
         Registrar = (Button) findViewById(R.id.button1);
-        
-        
+                
         Registrar.setOnClickListener(new OnClickListener() {
         	
         	public void onClick(View v){
@@ -45,8 +45,8 @@ public class MainActivity extends Activity {
 //    		}
         	}
         });
+        
     }
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
