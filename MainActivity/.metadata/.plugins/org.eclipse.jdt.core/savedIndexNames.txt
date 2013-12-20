@@ -1,0 +1,4 @@
+INDEX VERSION 1.126+C:\Fernando\Stud\2013-2\Multimedios\Proyecto\MainActivity\.metadata\.plugins\org.eclipse.jdt.core
+715257351.index
+2652672156.index
+2344886257.index

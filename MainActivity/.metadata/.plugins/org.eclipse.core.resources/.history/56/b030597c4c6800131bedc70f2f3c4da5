@@ -1,0 +1,11 @@
+package com.proyectom;
+
+import java.util.Vector;
+
+public class ciudades {
+	Vector<String> ciudades;
+	
+	public ciudades(){
+		
+	}
+}

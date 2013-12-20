@@ -1,0 +1,163 @@
+package com.proyectom;
+
+import java.util.Vector;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.Reader;
+import java.io.UnsupportedEncodingException;
+import java.net.HttpURLConnection;
+import java.net.URL;
+
+public class viaje {
+	int idViaje;
+	int idConductor;
+	Vector<Integer> idPasajero;
+	int idOrigen;
+	String ciudadOrigen;
+	int idDestino;
+	String ciudadDestino;
+	String fecha;
+	String ptoPartida;
+	String ptoPartidagps;
+	String ptoLlegada;
+	String ptoLlegadagps;
+
+		public viaje(int idViaje,int idConductor,int idOrigen,int idDestino,String fecha,String ptoPartida, String ptoPartidagps,String ptoLlegada,String ptoLlegadagps){
+			this.idViaje = idViaje;
+			this.idConductor = idConductor;
+			this.idPasajero = new Vector<Integer>();
+			this.idOrigen = idOrigen;
+			this.idDestino = idDestino;
+			this.fecha = fecha;
+			this.ptoPartida = ptoPartida;
+			this.ptoPartidagps = ptoPartidagps;
+			this.ptoLlegada = ptoLlegada;
+			this.ptoLlegadagps = ptoLlegadagps;
+		}
+		
+		public viaje() {
+			// TODO Auto-generated constructor stub
+		}
+
+		public void setidViaje(int idViaje){
+			this.idViaje = idViaje;
+		}
+		public void setidConductor(int idConductor){
+			this.idConductor = idConductor;
+		}
+		public void setidOrigen(int idOrigen, String ciudadOrigen){
+			this.idOrigen = idOrigen;
+			this.ciudadOrigen = ciudadOrigen;
+		}
+		public void setidDestino(int idDestino, String ciudadDestino){
+			this.idDestino = idDestino;
+			this.ciudadDestino = ciudadDestino;
+		}
+		public void setfecha(String fecha){
+			this.fecha = fecha;
+		}
+		public void setptoPartida(String ptoPartida, String ptoPartidagps){
+			this.ptoPartida = ptoPartida;
+			this.ptoPartidagps = ptoPartidagps;
+		}
+		public void setptoLlegada(String ptoLlegada, String ptoLlegadagps){
+			this.ptoLlegada = ptoLlegada;
+			this.ptoLlegadagps = ptoLlegadagps;
+		}
+		public int getidViaje(){
+			return this.idViaje;
+		}
+		public int getidConductor(){
+			return this.idConductor;
+		}
+		public Vector<Integer> getidPasajero(){
+			return this.idPasajero;
+		}
+		public int getidOrigen(){
+			return this.idOrigen;
+		}
+		public int getidDestino(){
+			return this.idDestino;
+		}
+		public String getfecha(){
+			return this.fecha;
+		}
+		public String getptoPartida(){
+			return this.ptoPartida;
+		}
+		public String getptoPartidagps(){
+			return this.ptoPartidagps;
+		}
+		public String getptoLlegada(){
+			return this.ptoLlegada;
+		}
+		public String getptoLlegadagps(){
+			return this.ptoLlegadagps;
+		}
+		public void addPasajero(int idPasajero){
+			this.idPasajero.add(idPasajero);
+		}
+		
+		public String registerDB() {
+            String parameters = "http://10.0.2.2/consultaviaje.php?action=agregar&idconductor="+this.idConductor+"&idorigen="+this.idOrigen+"&iddestino="+this.idDestino+"&ptopartida="+this.ptoPartida+"&ptopartidagps="+this.ptoPartidagps+"&ptollegada="+this.ptoLlegada+"&ptollegadagps="+this.ptoLlegadagps+"&fecha="+this.fecha;   
+            parameters = parameters.replaceAll(" ","%20");
+            try
+            {
+            	System.setProperty("java.net.preferIPv4Stack" , "true");
+            	URL url = new URL(parameters);
+            	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            	connection.setRequestMethod("GET");
+		        connection.setConnectTimeout(10000);
+		        connection.setReadTimeout(5000);
+		        connection.setDoInput(true);
+		        		        
+		        connection.connect();
+		        
+		        String contentAsString = readIt(connection.getInputStream());
+		        return contentAsString;        
+	         }
+	         catch(IOException e)
+	         {
+	        	 return e.getMessage();
+	         }
+		}
+		public String searchDB() {
+            String parameters = "http://10.0.2.2/consultaviaje.php?action=buscar&idorigen="+this.idOrigen+"&iddestino="+this.idDestino+"&fecha="+this.fecha;   
+            parameters = parameters.replaceAll(" ","%20");
+            try
+            {
+            	System.setProperty("java.net.preferIPv4Stack" , "true");
+            	URL url = new URL(parameters);
+            	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            	connection.setRequestMethod("GET");
+		        connection.setConnectTimeout(10000);
+		        connection.setReadTimeout(5000);
+		        connection.setDoInput(true);
+		        		        
+		        connection.connect();
+		        
+		        String contentAsString = readIt(connection.getInputStream());
+		        return contentAsString;        
+	         }
+	         catch(IOException e)
+	         {
+	        	 return e.getMessage();
+	         }
+		}
+		public String readIt(InputStream stream) throws IOException, UnsupportedEncodingException {
+
+			Reader reader = null;
+			StringBuilder inputStringBuilder = new StringBuilder();
+			reader = new InputStreamReader(stream, "UTF-8");     
+			BufferedReader bufferedReader = new BufferedReader(reader);
+			String line = bufferedReader.readLine();
+			while(line != null){
+		   		inputStringBuilder.append(line);
+				inputStringBuilder.append('\n');
+				line = bufferedReader.readLine();
+		   }
+			return inputStringBuilder.toString();
+		}
+}

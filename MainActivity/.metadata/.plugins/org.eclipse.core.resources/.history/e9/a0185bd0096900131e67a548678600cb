@@ -1,0 +1,93 @@
+package com.proyectom;
+
+import java.util.List;
+
+import com.example.proyectom.R;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+public class RSSAdapter_viaje extends ArrayAdapter<ModelViaje> {
+	LayoutInflater mInflater;
+	int mCount;
+
+	public RSSAdapter_viaje(Context context, int textViewResourceId,
+			List<ModelViaje> objects) {
+		super(context, textViewResourceId, objects);
+		mInflater = LayoutInflater.from(context);
+		mCount = objects.size();
+	}
+	
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		
+		ViewHolder holder = null;
+		TextView idConductor = null;
+	    TextView ciudadOrigen = null;
+	    TextView ciudadDestino = null;
+	    TextView fecha = null;
+	    TextView ptoPartida = null;
+	    TextView ptoPartidaGPS = null;
+	    TextView ptoLlegada = null;
+	    TextView ptoLlegadaGPS = null;
+	        
+		final ModelViaje model = (ModelViaje) getItem(position);
+	
+		if(convertView == null){
+	         convertView = mInflater.inflate(R.layout.show_travel, null);
+	         holder = new ViewHolder(convertView);
+	         convertView.setTag(holder);
+	    } else {
+	    	holder = (ViewHolder) convertView.getTag();
+	    }
+		
+		idConductor = holder.getTitle();
+		ciudadOrigen = holder.getLocationText();
+		
+		title.setText(model.title);
+		location.setText(model.location);
+		
+		return convertView;
+	}
+	
+	@Override
+    public int getCount() {
+    	return mCount;
+    }
+	
+	private class ViewHolder {
+	    private View mRow;
+	    
+	    private TextView idViaje;
+	    private TextView idConductor;
+	    private TextView ciudadOrigen;
+	    private TextView ciudadDestino;
+	    private TextView fecha;
+	    private TextView ptoPartida;
+	    private TextView ptoPartidagps;
+	    private TextView ptoLlegada;
+	    private TextView ptoLlegadagps;
+	    
+	    public ViewHolder(View row) {
+	          mRow = row;
+	    }
+	    
+	    public TextView getTitle(){
+	    	if(title == null){
+	    		title = (TextView) mRow.findViewById(R.id.title);
+	    	}
+	    	return title;
+	    }
+	    
+	    public TextView getLocationText(){
+	    	if(location == null){
+	    		location = (TextView) mRow.findViewById(R.id.dist);
+	    	}
+	    	return location;
+	    }
+	    
+	}
+}

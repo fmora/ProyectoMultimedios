@@ -1,0 +1,77 @@
+package com.proyectom;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
+
+import com.example.proyectom.R;
+
+import android.app.Activity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+public class SearchTravel extends Activity {
+	private Button button;
+	Spinner citySource, cityDest;
+	EditText fecha;
+	private List<String> aux;
+	private Vector<String> ciudades;
+	
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.search_travel);
+		//setear ciudades para mostrar y registrar
+		Bundle b = new Bundle(); 
+		b = getIntent().getExtras();
+		int lenght = b.getInt("lenght");
+		ciudades = new Vector<String>();
+		ciudades.addElement(" ");
+		aux = new ArrayList<String>();
+		for(int i = 1; i < lenght; i++){
+			ciudades.addElement(b.getString(Integer.toString(i)));
+			aux.add(b.getString(Integer.toString(i)));
+		}
+		
+		String[] toShow = aux.toArray(new String[0]);
+		
+		button = (Button) findViewById(R.id.button1);
+		citySource = (Spinner) findViewById(R.id.spinner1);
+		cityDest = (Spinner) findViewById(R.id.spinner2);
+		fecha = (EditText) findViewById(R.id.editText1);
+				
+		ArrayAdapter<String> adaptador = new ArrayAdapter<String>(this,android.R.layout.simple_spinner_item,(String[]) toShow);
+		citySource.setAdapter(adaptador);
+		cityDest.setAdapter(adaptador);
+		button.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+            	new sea_travel().execute();
+            }
+        });
+	}
+       
+    class sea_travel extends AsyncTask<Void,Void,Boolean>{
+		@Override
+		protected Boolean doInBackground(Void... arg0) {
+			// TODO Auto-generated method stub
+			//obtener datos a registrar
+						
+			int par3 = ciudades.indexOf(citySource.getSelectedItem().toString());
+        	int par4 = ciudades.indexOf(cityDest.getSelectedItem().toString());
+        	String fecha = 
+        	return true;
+		}
+		protected void onPostExecute(Boolean result){
+			if(result)
+				Toast.makeText(getApplicationContext(), "hola", Toast.LENGTH_SHORT).show();
+		}
+	}
+}

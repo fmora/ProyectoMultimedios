@@ -1,0 +1,144 @@
+package com.proyectom;
+
+import java.util.List;
+
+import com.example.proyectom.R;
+
+import android.content.Context;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+
+public class RSSAdapter_viaje extends ArrayAdapter<ModelViaje> {
+	LayoutInflater mInflater;
+	int mCount;
+
+	public RSSAdapter_viaje(Context context, int textViewResourceId,
+			List<ModelViaje> objects) {
+		super(context, textViewResourceId, objects);
+		mInflater = LayoutInflater.from(context);
+		mCount = objects.size();
+	}
+	
+	public View getView(final int position, View convertView, ViewGroup parent) {
+		
+		ViewHolder holder = null;
+		TextView idConductor = null;
+	    TextView ciudadOrigen = null;
+	    TextView ciudadDestino = null;
+	    TextView fecha = null;
+	    TextView ptoPartida = null;
+	    TextView ptoPartidaGPS = null;
+	    TextView ptoLlegada = null;
+	    TextView ptoLlegadaGPS = null;
+	        
+		final ModelViaje model = (ModelViaje) getItem(position);
+	
+		if(convertView == null){
+	         convertView = mInflater.inflate(R.layout.show_travel, null);
+	         holder = new ViewHolder(convertView);
+	         convertView.setTag(holder);
+	    } else {
+	    	holder = (ViewHolder) convertView.getTag();
+	    }
+		idConductor = holder.getidConductor();
+	    ciudadOrigen = holder.getciudadOrigen();
+	    ciudadDestino = holder.getciudadDestino();
+	    fecha = holder.getfecha();
+	    ptoPartida = holder.getptopartida();
+	    ptoPartidaGPS = holder.getptoPartidaGPS();
+	    ptoLlegada = holder.getptoLlegada();
+	    ptoLlegadaGPS = holder.getptoLlegadaGPS();
+		
+	    idConductor.setText(model.idConductor);
+	    ciudadOrigen.setText(model.ciudadOrigen);
+	    ciudadDestino.setText(model.ciudadDestino);
+	    fecha.setText(model.fecha);
+	    ptoPartida.setText(model.ptoPartida);
+	    ptoPartidaGPS.setText(model.ptoPartidagps);
+	    ptoLlegada.setText(model.ptoLlegada);
+	    ptoLlegadaGPS.setText(model.ptoLlegadagps);
+		return convertView;
+	}
+	
+	@Override
+    public int getCount() {
+    	return mCount;
+    }
+	
+	private class ViewHolder {
+	    private View mRow;
+	    
+	    private TextView idConductor;
+	    private TextView ciudadOrigen;
+	    private TextView ciudadDestino;
+	    private TextView fecha;
+	    private TextView ptoPartida;
+	    private TextView ptoPartidagps;
+	    private TextView ptoLlegada;
+	    private TextView ptoLlegadagps;
+	    
+	    public ViewHolder(View row) {
+	          mRow = row;
+	    }
+	    
+	    public TextView getidConductor(){
+	    	if(idConductor == null){
+	    		idConductor = (TextView) mRow.findViewById(R.id.idcond);
+	    	}
+	    	return idConductor;
+	    }
+	    
+	    public TextView getciudadOrigen(){
+	    	if(ciudadOrigen == null){
+	    		ciudadOrigen = (TextView) mRow.findViewById(R.id.ciuOrigen);
+	    	}
+	    	return ciudadOrigen;
+	    }
+	    
+	    public TextView getciudadDestino(){
+	    	if(ciudadDestino == null){
+	    		ciudadDestino = (TextView) mRow.findViewById(R.id.ciuDest);
+	    	}
+	    	return ciudadDestino;
+	    }
+	    
+	    public TextView getfecha(){
+	    	if(fecha == null){
+	    		fecha = (TextView) mRow.findViewById(R.id.fecha);
+	    	}
+	    	return fecha;
+	    }
+	    
+	    public TextView getptopartida(){
+	    	if(ptoPartida == null){
+	    		ptoPartida = (TextView) mRow.findViewById(R.id.ptopartida);
+	    	}
+	    	return ptoPartida;
+	    }
+	    
+	    public TextView getptoPartidaGPS(){
+	    	if(ptoPartidagps == null){
+	    		ptoPartidagps = (TextView) mRow.findViewById(R.id.ptopartidagps);
+	    	}
+	    	return ptoPartidagps;
+	    }
+	    
+	    public TextView getptoLlegada(){
+	    	if(ptoLlegada == null){
+	    		ptoLlegada = (TextView) mRow.findViewById(R.id.ptollegada);
+	    	}
+	    	return ptoLlegada;
+	    }
+	    
+	    public TextView getptoLlegadaGPS(){
+	    	if(ptoLlegadagps == null){
+	    		ptoLlegadagps = (TextView) mRow.findViewById(R.id.ptollegadagps);
+	    	}
+	    	return ptoLlegadagps;
+	    }
+	    
+	}
+}
