@@ -16,6 +16,7 @@ import android.widget.Toast;
 public class MenuPrincipal extends Activity {
 	
 	private Button IngresarViaje;
+	private Button BuscarViaje;
 	ciudades ListCiudades;
 	String[] aux;
 	
@@ -36,6 +37,22 @@ public class MenuPrincipal extends Activity {
         		for(int i = 1 ; i < lenght ; i++)
         			b.putString(Integer.toString(i),ListCiudades.ciudades.elementAt(i));;
         		Intent intent = new Intent(getApplicationContext(), RegisterTravel2.class);
+        		intent.putExtras(b);
+        		startActivity(intent);
+        
+        	}
+        });
+        BuscarViaje = (Button) findViewById(R.id.button2);
+        BuscarViaje.setOnClickListener(new OnClickListener() {
+        	
+        	public void onClick(View v){
+        	
+        		Bundle b = new Bundle();
+        		int lenght = ListCiudades.ciudades.size();
+        		b.putInt("lenght", lenght);
+        		for(int i = 1 ; i < lenght ; i++)
+        			b.putString(Integer.toString(i),ListCiudades.ciudades.elementAt(i));;
+        		Intent intent = new Intent(getApplicationContext(), SearchTravel.class);
         		intent.putExtras(b);
         		startActivity(intent);
         

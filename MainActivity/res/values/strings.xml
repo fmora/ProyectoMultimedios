@@ -16,13 +16,16 @@
     <string name="es_register">Registrar</string>
     <string name="es_cancel">Cancelar</string>
     <string name="title_activity_register_travel">Registro de Viaje</string>
-	<string name="es_registring">Registrando</string>
-	<string name="es_canceling">Cancelado</string>
-	<string name="es_finish">Finalizado</string>
-	<string name="es_registered">Registrado</string>
-	<string name="es_loaded">Datos Cargados</string>
-	<string name="name">user</string>
+    <string name="es_registring">Registrando</string>
+    <string name="es_canceling">Cancelado</string>
+    <string name="es_finish">Finalizado</string>
+    <string name="es_registered">Registrado</string>
+    <string name="es_loaded">Datos Cargados</string>
+    <string name="es_search">Buscar</string>
+    <string name="name">user</string>
     <string name="pass">pass</string>
     <string name="error_message">Usuario y contraseña incorrectos, por favor ingrese nuevamente.</string>
-    
+    <string name="title_activity_search__travel">Search_Travel</string>
+    <string name="title_activity_search_travel">SearchTravel</string>
+
 </resources>

@@ -37,6 +37,10 @@ public class viaje {
 			this.ptoLlegadagps = ptoLlegadagps;
 		}
 		
+		public viaje() {
+			// TODO Auto-generated constructor stub
+		}
+
 		public void setidViaje(int idViaje){
 			this.idViaje = idViaje;
 		}
@@ -98,6 +102,51 @@ public class viaje {
 		
 		public String registerDB() {
             String parameters = "http://10.0.2.2/consultaviaje.php?action=agregar&idconductor="+this.idConductor+"&idorigen="+this.idOrigen+"&iddestino="+this.idDestino+"&ptopartida="+this.ptoPartida+"&ptopartidagps="+this.ptoPartidagps+"&ptollegada="+this.ptoLlegada+"&ptollegadagps="+this.ptoLlegadagps+"&fecha="+this.fecha;   
+            parameters = parameters.replaceAll(" ","%20");
+            try
+            {
+            	System.setProperty("java.net.preferIPv4Stack" , "true");
+            	URL url = new URL(parameters);
+            	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            	connection.setRequestMethod("GET");
+		        connection.setConnectTimeout(10000);
+		        connection.setReadTimeout(5000);
+		        connection.setDoInput(true);
+		        		        
+		        connection.connect();
+		        
+		        String contentAsString = readIt(connection.getInputStream());
+		        return contentAsString;        
+	         }
+	         catch(IOException e)
+	         {
+	        	 return e.getMessage();
+	         }
+		}
+		public InputStream searchDB() {
+            String parameters = "http://10.0.2.2/consultaviaje.php?action=buscar&idorigen="+this.idOrigen+"&iddestino="+this.idDestino+"&fecha="+this.fecha;   
+            parameters = parameters.replaceAll(" ","%20");
+            try
+            {
+            	System.setProperty("java.net.preferIPv4Stack" , "true");
+            	URL url = new URL(parameters);
+            	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            	connection.setRequestMethod("GET");
+		        connection.setConnectTimeout(10000);
+		        connection.setReadTimeout(5000);
+		        connection.setDoInput(true);
+		        		        
+		        connection.connect();
+		        
+		        return connection.getInputStream();
+	         }
+	         catch(IOException e)
+	         {
+	        	 return null;
+	         }
+		}
+		public String registerpass(int idviaje, int idusuario) {
+            String parameters = "http://10.0.2.2/consultapasajero.php?action=agregar&idviaje="+idviaje+"&idusuario="+idusuario;   
             parameters = parameters.replaceAll(" ","%20");
             try
             {

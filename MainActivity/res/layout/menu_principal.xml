@@ -22,43 +22,45 @@
 			 />
 
 		<Button
-		    android:id="@+id/button1"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignLeft="@+id/widget64"
-		    android:layout_below="@+id/widget64"
-		    android:text="Ingresar oferta (conductor)" />
-		
-		<Button
-		    android:id="@+id/widget67"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignLeft="@+id/widget66"
-		    android:layout_below="@+id/widget66"
-		    android:text="Buscar ofertas y solicitudes" />
-        
-		<Button
-		    android:id="@+id/widget68"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:layout_alignLeft="@+id/widget67"
-		    android:layout_below="@+id/widget67"
-		    android:text="Editar perfil de usuario" />
-
-		<Button
 		    android:id="@+id/widget69"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_alignLeft="@+id/widget68"
-		    android:layout_below="@+id/widget68"
+		    android:layout_alignParentBottom="true"
+		    android:layout_alignRight="@+id/widget64"
+		    android:layout_marginBottom="38dp"
 		    android:text="Logout" />
 
 		<Button
 		    android:id="@+id/widget66"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_alignRight="@+id/button1"
-		    android:layout_below="@+id/button1"
+		    android:layout_above="@+id/button2"
+		    android:layout_centerHorizontal="true"
 		    android:text="Ingresar solicitud (peatón)" />
+
+		<Button
+		    android:id="@+id/button2"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/widget69"
+		    android:layout_alignLeft="@+id/widget66"
+		    android:layout_marginBottom="57dp"
+		    android:text="Buscar ofertas y solicitudes" />
+
+		<Button
+		    android:id="@+id/button1"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/widget66"
+		    android:layout_alignLeft="@+id/widget66"
+		    android:text="Ingresar oferta (conductor)" />
+
+		<Button
+		    android:id="@+id/widget68"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/button1"
+		    android:layout_centerHorizontal="true"
+		    android:text="Editar perfil de usuario" />
 		
 </RelativeLayout>
