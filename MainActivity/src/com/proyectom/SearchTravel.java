@@ -158,7 +158,7 @@ public class SearchTravel extends Activity {
 			while(!line.equals("</body>")){
 		   		int idViaje = Integer.parseInt(line);
 				line = bufferedReader.readLine();
-				int idConductor = Integer.parseInt(line);
+				String idConductor = line;
 				line = bufferedReader.readLine();
 				int idOrigen = Integer.parseInt(line);
 				line = bufferedReader.readLine();

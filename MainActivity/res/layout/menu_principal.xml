@@ -31,19 +31,19 @@
 		    android:text="Logout" />
 
 		<Button
-		    android:id="@+id/widget66"
+		    android:id="@+id/button3"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_above="@+id/button2"
 		    android:layout_centerHorizontal="true"
-		    android:text="Ingresar solicitud (peatón)" />
+		    android:text="Buscar Viajes (Conductor)" />
 
 		<Button
 		    android:id="@+id/button2"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
 		    android:layout_above="@+id/widget69"
-		    android:layout_alignLeft="@+id/widget66"
+		    android:layout_alignLeft="@+id/button3"
 		    android:layout_marginBottom="57dp"
 		    android:text="Buscar ofertas y solicitudes" />
 
@@ -51,9 +51,9 @@
 		    android:id="@+id/button1"
 		    android:layout_width="wrap_content"
 		    android:layout_height="wrap_content"
-		    android:layout_above="@+id/widget66"
-		    android:layout_alignLeft="@+id/widget66"
-		    android:text="Ingresar oferta (conductor)" />
+		    android:layout_above="@+id/button3"
+		    android:layout_alignLeft="@+id/button3"
+		    android:text="Ingresar oferta (Conductor)" />
 
 		<Button
 		    android:id="@+id/widget68"
@@ -62,5 +62,13 @@
 		    android:layout_above="@+id/button1"
 		    android:layout_centerHorizontal="true"
 		    android:text="Editar perfil de usuario" />
+
+		<Button
+		    android:id="@+id/button4"
+		    android:layout_width="wrap_content"
+		    android:layout_height="wrap_content"
+		    android:layout_above="@+id/widget69"
+		    android:layout_alignLeft="@+id/button3"
+		    android:text="Buscar Viajes (Pasajero)" />
 		
 </RelativeLayout>

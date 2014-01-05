@@ -12,7 +12,7 @@ import java.net.URL;
 
 public class viaje {
 	int idViaje;
-	int idConductor;
+	String idConductor;
 	Vector<Integer> idPasajero;
 	int idOrigen;
 	String ciudadOrigen;
@@ -24,7 +24,7 @@ public class viaje {
 	String ptoLlegada;
 	String ptoLlegadagps;
 
-		public viaje(int idViaje,int idConductor,int idOrigen,int idDestino,String fecha,String ptoPartida, String ptoPartidagps,String ptoLlegada,String ptoLlegadagps){
+		public viaje(int idViaje,String idConductor,int idOrigen,int idDestino,String fecha,String ptoPartida, String ptoPartidagps,String ptoLlegada,String ptoLlegadagps){
 			this.idViaje = idViaje;
 			this.idConductor = idConductor;
 			this.idPasajero = new Vector<Integer>();
@@ -44,7 +44,7 @@ public class viaje {
 		public void setidViaje(int idViaje){
 			this.idViaje = idViaje;
 		}
-		public void setidConductor(int idConductor){
+		public void setidConductor(String idConductor){
 			this.idConductor = idConductor;
 		}
 		public void setidOrigen(int idOrigen, String ciudadOrigen){
@@ -69,7 +69,7 @@ public class viaje {
 		public int getidViaje(){
 			return this.idViaje;
 		}
-		public int getidConductor(){
+		public String getidConductor(){
 			return this.idConductor;
 		}
 		public Vector<Integer> getidPasajero(){
@@ -168,6 +168,54 @@ public class viaje {
 	        	 return e.getMessage();
 	         }
 		}
+		
+		public InputStream searchTravelCondDB(int user){
+		String parameters = "http://10.0.2.2/consultaviaje.php?action=ver&idconductor="+user;   
+        parameters = parameters.replaceAll(" ","%20");
+        try
+        {
+        	System.setProperty("java.net.preferIPv4Stack" , "true");
+        	URL url = new URL(parameters);
+        	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+        	connection.setRequestMethod("GET");
+	        connection.setConnectTimeout(10000);
+	        connection.setReadTimeout(5000);
+	        connection.setDoInput(true);
+	        		        
+	        connection.connect();
+	        
+	        return connection.getInputStream();
+	              
+         }
+         catch(IOException e)
+         {
+        	 return null;
+         }
+	}
+		public InputStream searchTravelPasDB(int user){
+			String parameters = "http://10.0.2.2/consultaviaje.php?action=verPasajero&idconductor="+user;   
+	        parameters = parameters.replaceAll(" ","%20");
+	        try
+	        {
+	        	System.setProperty("java.net.preferIPv4Stack" , "true");
+	        	URL url = new URL(parameters);
+	        	HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+	        	connection.setRequestMethod("GET");
+		        connection.setConnectTimeout(10000);
+		        connection.setReadTimeout(5000);
+		        connection.setDoInput(true);
+		        		        
+		        connection.connect();
+		        
+		        return connection.getInputStream();
+		              
+	         }
+	         catch(IOException e)
+	         {
+	        	 return null;
+	         }
+		}
+		
 		public String readIt(InputStream stream) throws IOException, UnsupportedEncodingException {
 
 			Reader reader = null;

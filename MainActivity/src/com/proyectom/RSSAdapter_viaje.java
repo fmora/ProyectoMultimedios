@@ -52,7 +52,7 @@ public class RSSAdapter_viaje extends ArrayAdapter<ModelViaje> {
 	    ptoLlegada = holder.getptoLlegada();
 	    ptoLlegadaGPS = holder.getptoLlegadaGPS();
 		
-	    idConductor.setText("ID Conductor: "+Integer.toString(model.idConductor));
+	    idConductor.setText("ID Conductor: "+model.idConductor);
 	    ciudadOrigen.setText("Ciudad Origen: "+model.ciudadOrigen);
 	    ciudadDestino.setText("Ciudad Destino: "+model.ciudadDestino);
 	    fecha.setText("Fecha y Hora: "+model.fecha);

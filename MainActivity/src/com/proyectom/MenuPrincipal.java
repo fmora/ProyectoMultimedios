@@ -1,5 +1,6 @@
 package com.proyectom;
 
+
 import com.example.proyectom.R;
 
 import android.os.AsyncTask;
@@ -17,8 +18,11 @@ public class MenuPrincipal extends Activity {
 	
 	private Button IngresarViaje;
 	private Button BuscarViaje;
+	private Button BuscarViajeCond;
+	private Button BuscarViajePas;
 	ciudades ListCiudades;
 	String[] aux;
+	int user;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,12 +31,24 @@ public class MenuPrincipal extends Activity {
         new load_city().execute();
         
         IngresarViaje = (Button) findViewById(R.id.button1);
+        BuscarViaje = (Button) findViewById(R.id.button2);
+        BuscarViajeCond = (Button) findViewById(R.id.button3);
+        BuscarViajePas = (Button) findViewById(R.id.button4);
+        IngresarViaje.setVisibility(View.INVISIBLE);
+    	BuscarViaje.setVisibility(View.INVISIBLE);
+    	BuscarViajeCond.setVisibility(View.INVISIBLE);
+    	BuscarViajePas.setVisibility(View.INVISIBLE);
+    	Bundle b = new Bundle(); 
+		b = getIntent().getExtras();
+    	user =  b.getInt("iduser");
+    	
         IngresarViaje.setOnClickListener(new OnClickListener() {
         	
         	public void onClick(View v){
         	
         		Bundle b = new Bundle();
         		int lenght = ListCiudades.ciudades.size();
+        		b.putInt("iduser",user);
         		b.putInt("lenght", lenght);
         		for(int i = 1 ; i < lenght ; i++)
         			b.putString(Integer.toString(i),ListCiudades.ciudades.elementAt(i));;
@@ -42,17 +58,48 @@ public class MenuPrincipal extends Activity {
         
         	}
         });
-        BuscarViaje = (Button) findViewById(R.id.button2);
         BuscarViaje.setOnClickListener(new OnClickListener() {
+        	public void onClick(View v){
         	
+        		Bundle b = new Bundle();
+        		int lenght = ListCiudades.ciudades.size();
+        		b.putInt("iduser",user);
+        		b.putInt("lenght", lenght);
+        		for(int i = 1 ; i < lenght ; i++)
+        			b.putString(Integer.toString(i),ListCiudades.ciudades.elementAt(i));;
+        		Intent intent = new Intent(getApplicationContext(), SearchTravel.class);
+        		intent.putExtras(b);
+        		startActivity(intent);
+        
+        	}
+        });
+        
+        BuscarViajeCond.setOnClickListener(new OnClickListener() {
         	public void onClick(View v){
         	
         		Bundle b = new Bundle();
         		int lenght = ListCiudades.ciudades.size();
         		b.putInt("lenght", lenght);
+        		b.putInt("iduser",user);
         		for(int i = 1 ; i < lenght ; i++)
         			b.putString(Integer.toString(i),ListCiudades.ciudades.elementAt(i));;
-        		Intent intent = new Intent(getApplicationContext(), SearchTravel.class);
+        		Intent intent = new Intent(getApplicationContext(), ShowTravelConductor.class);
+        		intent.putExtras(b);
+        		startActivity(intent);
+        
+        	}
+        });
+      
+        BuscarViajePas.setOnClickListener(new OnClickListener() {
+        	public void onClick(View v){
+        	
+        		Bundle b = new Bundle();
+        		int lenght = ListCiudades.ciudades.size();
+        		b.putInt("lenght", lenght);
+        		b.putInt("iduser",user);
+        		for(int i = 1 ; i < lenght ; i++)
+        			b.putString(Integer.toString(i),ListCiudades.ciudades.elementAt(i));;
+        		Intent intent = new Intent(getApplicationContext(), ShowTravelPasajero.class);
         		intent.putExtras(b);
         		startActivity(intent);
         
@@ -69,6 +116,10 @@ public class MenuPrincipal extends Activity {
 			return true;
 		}
 		protected void onPostExecute(Boolean result){
+			IngresarViaje.setVisibility(View.VISIBLE);
+	    	BuscarViaje.setVisibility(View.VISIBLE);
+	    	BuscarViajeCond.setVisibility(View.VISIBLE);
+	    	BuscarViajePas.setVisibility(View.VISIBLE);
 			if(result)
 				Toast.makeText(getApplicationContext(),R.string.es_loaded, Toast.LENGTH_SHORT).show();
 		}

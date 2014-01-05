@@ -2,7 +2,7 @@ package com.proyectom;
 
 public class ModelViaje {
 	int idViaje;
-	int idConductor;
+	String idConductor;
 	String ciudadOrigen;
 	String ciudadDestino;
 	String fecha;

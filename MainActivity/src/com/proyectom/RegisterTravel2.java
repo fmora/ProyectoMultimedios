@@ -24,6 +24,7 @@ public class RegisterTravel2 extends Activity {
 	private List<String> aux;
 	private Vector<String> ciudades;
 	String resulthttp;
+	int user;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +34,7 @@ public class RegisterTravel2 extends Activity {
 		Bundle b = new Bundle(); 
 		b = getIntent().getExtras();
 		int lenght = b.getInt("lenght");
+		user = b.getInt("iduser");
 		ciudades = new Vector<String>();
 		ciudades.addElement(" ");
 		aux = new ArrayList<String>();
@@ -76,7 +78,7 @@ public class RegisterTravel2 extends Activity {
         	String par7 = startPointGPS.getText().toString();
         	String par8 = endPoint.getText().toString();
         	String par9 = endPointGPS.getText().toString();
-        	viaje viajeRegistrar = new viaje(0,1,par3,par4,par5,par6,par7,par8,par9);
+        	viaje viajeRegistrar = new viaje(0,Integer.toString(user),par3,par4,par5,par6,par7,par8,par9);
         	resulthttp = viajeRegistrar.registerDB();
 			return true;
 		}
